@@ -1,0 +1,26 @@
+<% if images.try(:any?) %>
+	<% if is_mobile_device? %>
+	<%
+	image_geometry = "x320"
+	thumb_geometry = "x80"
+	%>
+	<%= content_tag(:ul, :class => :photoswipe) do %>
+      <% images.each do |img| %>
+		<li> <%= link_to(image_fu(img, thumb_geometry, :rel => "external"), img.thumbnail(image_geometry).url)  %> </li>
+      <% end %>
+    <% end %>
+	<% else %>
+	<%
+	image_geometry = local_assigns.has_key?(:image_style) ? image_style : image_geometry
+	thumb_geometry = local_assigns.has_key?(:thumb_style) ? thumb_style : thumb_geometry
+	@datas = [] 
+	images.each do |img|
+		@datas << { :thumb  => img.thumbnail(thumb_geometry).url, :image  => img.thumbnail(image_geometry).url}
+	end
+	%>
+	<% content_for :before_javascript_libraries do %>
+		<%= javascript_tag("var data=#{@datas.to_json.to_s}") %>
+	<% end %>
+	<div class='galleria'></div>
+	<% end %>
+<% end %>

@@ -1,0 +1,35 @@
+<ul class="nav nav-menu <%= menu_name if local_assigns.key?(:menu_name) %>">
+  <% sections.each do |section| %>
+      <% if section %>
+          <%
+               has_children = section.children.in_menu.try(:any?)
+               show_contents = section.content_type && section.display_contents_in_menu
+               if show_contents
+                 contents = Content.with_section(section.id).live.order('contents.position')
+               end
+               has_contents = show_contents && contents.try(:any?)
+   			   has_dropdown = has_children || has_contents
+             #end
+
+             li_classes = []
+             #li_classes << "active" if !section.is_a?(Redirect) and active_url?(url_for([section]))
+             li_classes << "dropdown" if has_dropdown#(has_dropdown && is_dropdown)
+ li_classes << section.menu_css_class if section.menu_css_class.present?
+             li_classes = li_classes.join(" ")
+          %>
+<li id="<%= dom_id(section) %>" class="<%= li_classes unless li_classes.blank? %>">
+<%= menu_link(section, :dropdown => has_dropdown) -%>
+             <% if has_contents %>
+                 <ul class='dropdown-menu' role="menu" aria-labelledby="dLabel">
+                   <% contents.each do |content| %>
+                       <li><%= link_to(content.title, url_for([section, content])) %></li>
+                   <% end %>
+                 </ul>
+             <% end %>
+	<% if !section.leaf? && section.children.in_menu.try(:any?) %>
+		<%= render "dropdown_menu", :sections => section.children.in_menu %>
+	<% end %>
+          </li>
+      <% end %>
+  <% end %>
+</ul>

@@ -1,0 +1,324 @@
+$altColor: #67CCE6;//blue
+
+// Grays
+// -------------------------
+$black:                 #000;
+$grayDarker:            #414042;
+$grayDark:              #808285;
+$gray:                  #555;
+$grayLight:             #999;
+$grayLighter:           #eee;
+$white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+$blue:                  #07ABDD;
+$blueDark:              #0064cd;
+$green:                 #46a546;
+$red:                   #DD1F26;
+$yellow:                #ffc40d;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
+
+$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
+$textColor: #4F4F4F;
+$red: #DD1F26;//red
+$linkColor: #585858;
+$linkColorActive: $altColor;
+$linkColorHover: $altColor;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;
+$dropdownBorder:                rgba(0,0,0,.2);
+$dropdownLinkColor:             $grayDark;
+$dropdownLinkColorHover:        $white;
+$dropdownLinkBackgroundHover:   $linkColor;
+$dropdownDividerTop:            #e5e5e5;
+$dropdownDividerBottom:         $white;
+
+$navbarText: $textColor;
+$navbarLinkColor: $linkColor;
+$navbarLinkColorHover: $linkColorHover;
+
+
+// Navbar
+// -------------------------
+$navbarHeight:                    40px;
+$navbarBackground:                $white;
+$navbarBackgroundHighlight:       $white;
+
+$navbarText:                      $grayDark;
+$navbarLinkColor:                 $grayDark;
+$navbarLinkColorHover:            $grayDark;
+$navbarLinkColorActive:           $navbarLinkColorHover;
+$navbarLinkBackgroundHover:       transparent;
+$navbarLinkBackgroundActive:      $navbarBackground;
+
+$navbarSearchBackground:          lighten($navbarBackground, 25%);
+$navbarSearchBackgroundFocus:     $white;
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%);
+$navbarSearchPlaceholderColor:    #ccc;
+$navbarBrandColor:                $navbarLinkColor;
+
+
+//@import "gko_public_all";
+//@import "gko/store"; 
+//@import "gko/elastislide";
+@import "twitter.bootstrap.2.0.4/bootstrap";
+@import "gko/public/base";
+
+@import "photoswipe/photoswipe";
+@import "galleria";
+/*-----------------------------------------
+   SHARED STYLES 
+----------------------------------------- */ 
+ 
+/*-----------------------------------------
+ TYPOGRAPHY 
+----------------------------------------- */
+h1,h2,h3 {
+   font-weight: normal;
+}
+	
+	h1.page-title {
+	font-size: 24px;
+	line-height: 31px;
+	text-transform: lowercase;
+	font-weight: 200;
+	color: $altColor;
+	}
+
+body#home {
+	h1.page-title {
+		display: none;
+	}
+}
+/*-----------------------------------------
+ STRUCTURAL LAYOUT 
+----------------------------------------- */
+body {
+	font-weight: 300;
+}
+.navbar,
+.container-fluid {
+	max-width: 926px;
+	@include box-sizing(border-box);
+	@include center-block();
+} 
+label { 
+	font-size: 13px; 
+}
+
+.grid > li {
+	.thumbnail {
+		border: none;
+		@include border-radius(0);
+		@include box-shadow(none);
+		.thumbnail-image {
+			background: #FFFFFF; 
+		    @include transition(all 0.3s ease-out);
+		}
+		h2.thumbnail-title,
+		h2.thumbnail-title a {
+			font-size: $baseFontSize;
+			font-weight: 700; 
+			line-height: $baseLineHeight;
+		}
+	}
+}
+#copyright-container {
+	text-align: center;
+}
+#site-by {
+	font-size: 9px;
+}
+
+/*-----------------------------------------
+ GLOBAL EFFECT
+----------------------------------------- */
+a {
+   @include transition('color .5s linear, background-color .5s linear')
+}
+/*-----------------------------------------
+ HEADER
+----------------------------------------- */
+
+.navbar .nav > li > a {
+	text-shadow: none;
+	.caret {
+		display:none;
+	}
+}
+
+.navbar .brand {
+	
+	a {
+		padding: 0;
+		margin: 0 auto;
+		background: transparent image-url("logo.png") center center no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		text-decoration: none;
+		display: block;
+		width: 274px;
+		height: 47px;
+		@include hide-text;
+	}
+}
+#locales-menu {
+	float:right;
+}
+/*-----------------------------------------
+ FOOTER
+----------------------------------------- */
+.facebook {
+position: absolute;
+top: 598px;
+left: 0;
+text-align: left;
+z-index: 100;
+font-size: 12px;
+line-height: 31px;
+text-transform: uppercase
+}
+
+#copyright {
+	float:left;
+	font-size:9px;
+	padding-top:12px;
+}
+a#site_by {
+	float:right;
+	background: asset-url("logo_gecko_black.png", image) no-repeat scroll 0 1px transparent;
+	text-decoration:none;
+}
+
+
+.html-text {
+font-size: 22px;
+line-height: 34px;
+font-weight: 100
+}
+.html-text img.selected_by_wym {
+float: left;
+margin-right: 12px
+}
+
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+@import "twitter.bootstrap.2.0.4/bootstrap/responsive";
+@import "gko/default_responsive";
+
+@media (max-width: 979px) {
+	
+	.navbar .brand {
+		left: auto;
+	  float: none;
+	  text-align: center;
+	  padding: 0;
+	}
+	 
+	// Nav and dropdown links in navbar
+	.nav-collapse nav,
+	.nav-collapse .nav {
+		@include clearfix();
+	}
+	.nav-collapse .dropdown-menu {
+		margin: 0;
+		li {
+			padding-left: 24px;
+		}
+	}
+	.nav-collapse .nav > li,
+	.nav-collapse .dropdown-menu li {
+	  	
+		border-bottom: 1px solid $grayLighter;
+	}
+	.nav-collapse .dropdown-menu li:last-child {
+		border-bottom: none;
+	}
+	
+	.nav-collapse .nav > li > a,
+	.nav-collapse .dropdown-menu a {
+	  font-weight: normal;
+	  @include border-radius(0);
+	}
+	.nav-collapse .dropdown-menu a:hover {
+	  	background-color: $navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
+		color: $navbarLinkColorHover;
+	}
+	
+}
+@media (min-width: 980px) {
+	/* Main menu settings */
+	nav#primary-menu {
+		float: right;
+		margin-top: 18px;
+		.dropdown-menu {
+			background: transparent;
+			border: none;
+			@include border-radius(0);
+			left: auto;
+			right: 0;
+			min-width: 220px;
+			padding: 0;
+			margin: 0;
+			li {
+				background: black;
+				background-color: rgba(0, 0, 0, 0.4);
+				margin: 0 0 1px 0;
+			}
+			a {
+				@include transition(all 0.3s ease-in-out);
+				font-size:24px;
+				line-height:24px;
+				font-weight:600;
+				text-transform:lowercase;
+				padding: 4px 8px;
+				text-align: right;
+			}
+		}
+		
+		ul.nav {
+			> li {
+				border-bottom: none;
+				margin:0;
+				padding: 0;
+				&:first-child {
+					margin:0;
+					padding: 0;
+				};
+			}
+			> li > a {
+				@include transition(all 0.3s ease-in-out);
+				font-size:24px;
+				line-height:24px;
+				font-weight:600;
+				text-transform:lowercase;
+				padding: 0;
+			}
+		}
+	}
+	.navbar .brand {
+	  margin: 12px 0 0 0;
+	  padding: 0;
+	}
+	#main-container {
+		position: relative;
+	}
+	body#album h1.page-title {
+	position: absolute;
+	top: 598px;
+	right: 245px;
+	text-align: right;
+	z-index: 100;
+	font-size: 12px;
+	line-height: 31px;
+	
+	text-transform: uppercase
+	}
+}
