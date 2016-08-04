@@ -7,6 +7,7 @@ GIT
     gko_auth (0.8.43)
       cancan (~> 1.6.10)
       devise (~> 2.2.3)
+    gko_categories (0.8.43)
     gko_core (0.8.43)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.7)
@@ -266,6 +267,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   gko_albums!
   gko_auth!
+  gko_categories!
   gko_core!
   gko_inquiries!
   mysql2 (= 0.3.18)
