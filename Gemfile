@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "1.8.7"
 
 group :assets do
   gem 'sass', '= 3.2.14'
@@ -17,13 +16,12 @@ group :production do
      gem 'gko_auth'
      gem 'gko_inquiries'
      gem 'gko_albums'
-     gem "gko_categories"
   end
 end
 
-#group :development do
+# group :development do
 #  gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
 #  gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
 #  gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
 #  gem "gko_albums", :path => '~/Github/gko_cms3/gko_albums'
-#end
+# end
