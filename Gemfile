@@ -16,6 +16,7 @@ group :production do
      gem 'gko_auth'
      gem 'gko_inquiries'
      gem 'gko_albums'
+     gem 'gko_categories'
   end
 end
 
